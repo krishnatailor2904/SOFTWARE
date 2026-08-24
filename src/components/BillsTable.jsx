@@ -14,6 +14,7 @@ export default function BillsTable({ bills, onOpenMeasurement, onEdit, onDelete,
         <tr>
           <th>Bill No.</th>
           <th>Date</th>
+             <th>Delivery Date</th>
           <th>Name</th>
           <th>Phone No.</th>
           <th>Cloth Price</th>
@@ -32,7 +33,8 @@ export default function BillsTable({ bills, onOpenMeasurement, onEdit, onDelete,
                 {bill.bill_no}
               </button>
             </td>
-            <td className="date-cell">{formatDate(bill.created_at)}</td>
+             <td className="date-cell">{formatDate(bill.bill_date)}</td>
+            <td className="date-cell">{formatDate(bill.delivery_date)}</td>
             <td className="name-cell">{bill.name}</td>
             <td>{bill.phone}</td>
             <td>{Number(bill.cloth_price).toFixed(2)}</td>

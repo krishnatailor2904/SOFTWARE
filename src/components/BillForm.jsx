@@ -7,23 +7,20 @@ function nextBillNo() {
   return `B${stamp}`
 }
 
-function formatDate(value) {
-  const d = value ? new Date(value) : new Date()
-  return d.toLocaleDateString('en-IN', {
-    day: '2-digit',
-    month: 'short',
-    year: 'numeric',
-  })
+function todayISO() {
+  return new Date().toISOString().slice(0, 10)
 }
 
 export default function BillForm({ bill, onClose, onSaved }) {
   const isEdit = Boolean(bill)
   const displayDate = formatDate(bill?.created_at)
 
-  const [form, setForm] = useState({
+   const [form, setForm] = useState({
     bill_no: bill?.bill_no || nextBillNo(),
     name: bill?.name || '',
     phone: bill?.phone || '',
+    bill_date: bill?.bill_date || todayISO(),
+    delivery_date: bill?.delivery_date || '',
     cloth_price: bill?.cloth_price ?? '',
     stitching_price: bill?.stitching_price ?? '',
     note: bill?.note || '',
@@ -49,10 +46,12 @@ export default function BillForm({ bill, onClose, onSaved }) {
     setError('')
 
     try {
-      const payload = {
+            const payload = {
         bill_no: form.bill_no,
         name: form.name,
         phone: form.phone,
+        bill_date: form.bill_date,
+        delivery_date: form.delivery_date || null,
         cloth_price: form.cloth_price || 0,
         stitching_price: form.stitching_price || 0,
         note: form.note,
@@ -123,9 +122,23 @@ export default function BillForm({ bill, onClose, onSaved }) {
                 />
               </div>
 
-              <div className="form-field full">
+                            <div className="form-field">
                 <label>Date</label>
-                <input value={displayDate} disabled />
+                <input
+                  type="date"
+                  value={form.bill_date}
+                  onChange={handleChange('bill_date')}
+                  required
+                />
+              </div>
+
+              <div className="form-field">
+                <label>Delivery Date</label>
+                <input
+                  type="date"
+                  value={form.delivery_date}
+                  onChange={handleChange('delivery_date')}
+                />
               </div>
 
               <div className="form-field full">
