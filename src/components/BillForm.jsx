@@ -13,7 +13,6 @@ function todayISO() {
 
 export default function BillForm({ bill, onClose, onSaved }) {
   const isEdit = Boolean(bill)
-  const displayDate = formatDate(bill?.created_at)
 
    const [form, setForm] = useState({
     bill_no: bill?.bill_no || nextBillNo(),
