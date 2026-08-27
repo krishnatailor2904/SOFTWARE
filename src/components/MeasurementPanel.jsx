@@ -15,7 +15,7 @@ const PANT_FIELDS = [
   ['pant_waist', 'Waist'],
   ['pant_thigh', 'thigh'],
   ['pant_bottom', 'Bottom'],
-  ['pant_thighp', 'thighp'],
+  ['pant_hip', 'hip'],
   ['pant_seat_langot', 'Seat (Langot)'],
 ]
 
