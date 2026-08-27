@@ -13,9 +13,9 @@ const SHIRT_FIELDS = [
 const PANT_FIELDS = [
   ['pant_length', 'Length'],
   ['pant_waist', 'Waist'],
-  ['pant_thigh', 'thigh'],
+  ['pant_thigh', 'Hip'],
   ['pant_bottom', 'Bottom'],
-  ['pant_hip', 'hip'],
+  ['pant_hip', 'Thigh'],
   ['pant_seat_langot', 'Seat (Langot)'],
 ]
 
